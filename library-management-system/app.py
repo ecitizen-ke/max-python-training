@@ -14,6 +14,13 @@ class Book:
         return f"{self.book}"
 
 
+class Library:
+    """This is a model of the Library object"""
+
+    def __init__(self):
+        self.books = []
+
+
 def run():
     """This function runs the application"""
 
