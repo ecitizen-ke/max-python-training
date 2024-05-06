@@ -56,8 +56,11 @@ class Library:
                 else:
                     print(f"The book {title} is not available at the moment!")
 
-    def __str__(self):
-        return f"{self.books}"
+    def display_checked_out_books(self):
+        """method that displays a list of checked out books in the library"""
+        for books in self.books:
+            if "checked_out" in books and books["checked_out"]:
+                print(books)
 
 
 def commit(object, flag):
@@ -73,7 +76,7 @@ def run():
     library = Library()
     library.add_book(("0000000000004", "48 Laws of Power", "Morris Green"))
     library.book_checkout("Morris Green")
-    library.display_all_books()
+    library.display_checked_out_books()
 
 
 if __name__ == "__main__":
