@@ -24,5 +24,10 @@
     "author": "Morris Green",
     "checked_out": true,
     "checked_in": false
+  },
+  {
+    "isbn": "0000000000005",
+    "title": "A Primer to Kubernetes",
+    "author": "Maxwel Barno"
   }
 ]

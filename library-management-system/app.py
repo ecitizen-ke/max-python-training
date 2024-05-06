@@ -2,6 +2,17 @@
 import json
 
 
+class Book:
+    """This is Book object model"""
+
+    def save(self, isbn, title, author):
+        self.isbn = isbn
+        self.title = title
+        self.author = author
+        # return book data as a tuple
+        return (self.isbn, self.title, self.author)
+
+
 class Library:
     """This is a model of the Library object"""
 
@@ -74,7 +85,8 @@ def run():
     """This function runs the application"""
     # inititialize the Library object
     library = Library()
-    library.add_book(("0000000000004", "48 Laws of Power", "Morris Green"))
+    book = Book().save("0000000000005", "A Primer to Kubernetes", "Maxwel Barno")
+    library.add_book(book)
     library.book_checkout("Morris Green")
     library.display_checked_out_books()
 
