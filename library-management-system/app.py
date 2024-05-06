@@ -18,6 +18,10 @@ class Library:
         # return the added book as a dictionary
         return bk
 
+    def display_all_books(self):
+        """method that displays all books in the library"""
+        return self.books
+
     def __str__(self):
         return f"{self.books}"
 
@@ -29,11 +33,13 @@ def run():
 
     # inititialize two Book objects: book1 and book2
     book = ("0000000000001", "Introduction to Python", "Mr Mesfin Githinji")
+    book1 = ("0000000000002", "Fundamentals of JavaScript", "Mr Simeon Osiemo")
 
     # Add both books to the library
     library.add_book(book)
+    library.add_book(book1)
 
-    print(str(library.books))
+    print(library.display_all_books())
 
 
 if __name__ == "__main__":
