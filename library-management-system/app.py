@@ -35,7 +35,8 @@ class Library:
 
     def display_all_books(self):
         """method that displays all books in the library"""
-        print(self.books)
+        for book in self.books:
+            print(book)
 
     def search_book_by_title(self, title):
         """method that searches a book in the library by title"""
@@ -69,9 +70,9 @@ class Library:
 
     def display_checked_out_books(self):
         """method that displays a list of checked out books in the library"""
-        for books in self.books:
-            if "checked_out" in books and books["checked_out"]:
-                print(books)
+        for book in self.books:
+            if "checked_out" in book and book["checked_out"]:
+                print(book)
 
     def return_book(self, title):
         """This method adds the ability to return a borrowed book to the library"""
@@ -112,7 +113,7 @@ def run():
         print("An inventory of all the books in the library")
         print("--------------------------------------------")
         library.display_all_books()
-        print("Done! Exiting Command..")
+        print("Done! Exiting Program...")
 
     elif command == "2":
         print("Add Book")
@@ -122,20 +123,20 @@ def run():
         author = input("Enter book author:")
         bk = Book().save(isbn, title, author)
         library.add_book(bk)
-        print("Transaction complete. Exiting..")
+        print("Transaction complete. Exiting Program...")
 
     elif command == "3":
         print("Find Book")
         print("---------")
         title = input("Enter the title of the book:")
         library.book_checkout(title)
-        print("Done! Exiting..")
+        print("Done! Exiting Program...")
 
     elif command == "4":
         print("A list of All Borrowed Books")
         print("---------------------------")
         library.display_checked_out_books()
-        print("Done! Exiting..")
+        print("Done! Exiting Program...")
 
     elif command == "5":
         print("Thanks and Adios...")

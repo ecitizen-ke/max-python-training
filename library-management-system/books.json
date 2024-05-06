@@ -2,14 +2,14 @@
   {
     "isbn": "0000000000001",
     "title": "Introduction to Python",
-    "author": "Mr Mesfin Githinji",
+    "author": "Mesfin Githinji",
     "checked_out": true,
     "checked_in": false
   },
   {
     "isbn": "0000000000002",
     "title": "Fundamentals of JavaScript",
-    "author": "Mr Simeon Osiemo"
+    "author": "Simeon Osiemo"
   },
   {
     "isbn": "0000000000003",
@@ -21,19 +21,19 @@
   {
     "isbn": "0000000000004",
     "title": "48 Laws of Power",
-    "author": "Morris Green",
+    "author": "Khadija Mwaganga",
     "checked_out": false,
     "checked_in": true
   },
   {
     "isbn": "0000000000005",
     "title": "A Primer to Kubernetes",
-    "author": "Maxwel Barno"
+    "author": "Kipruto Barno"
   },
   {
     "isbn": "0000000000006",
     "title": "The Davinci Code",
-    "author": "Robert Langdon",
+    "author": "Wendy Achieng",
     "checked_out": true,
     "checked_in": false
   }
