@@ -10,11 +10,15 @@ This is a simple python program that manages a collection of books. The program 
 
 To run this project locally
 
-1. Clone the repository from github
-2. Navigate to the project root directory by issuing the following command on the terminal:
+1. Clone this repository
+2. Navigate to the project root directory. On the terminal, run:
+
    `$ cd max-python-training/library-management-system`
+
 3. Make the program executable by running the following command in the terminal:
+
    `$ chmod u+x app.py`
 
 4. Execute the program with the following commands:
+
    `$./app.py`
