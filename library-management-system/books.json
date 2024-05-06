@@ -22,8 +22,8 @@
     "isbn": "0000000000004",
     "title": "48 Laws of Power",
     "author": "Morris Green",
-    "checked_out": true,
-    "checked_in": false
+    "checked_out": false,
+    "checked_in": true
   },
   {
     "isbn": "0000000000005",
