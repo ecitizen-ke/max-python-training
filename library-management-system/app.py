@@ -22,6 +22,14 @@ class Library:
         """method that displays all books in the library"""
         return self.books
 
+    def search_book_by_title(self, title):
+        """method that searches for a book in the library by title"""
+        for book in self.books:
+            if book["title"].lower() == title.lower():
+                return book
+            else:
+                return "A book by that title is not available in our library"
+
     def __str__(self):
         return f"{self.books}"
 
@@ -39,7 +47,7 @@ def run():
     library.add_book(book)
     library.add_book(book1)
 
-    print(library.display_all_books())
+    print(library.search_book_by_title("Introduction to Python"))
 
 
 if __name__ == "__main__":
