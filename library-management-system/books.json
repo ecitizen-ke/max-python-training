@@ -1,0 +1,28 @@
+[
+  {
+    "isbn": "0000000000001",
+    "title": "Introduction to Python",
+    "author": "Mr Mesfin Githinji",
+    "checked_out": true,
+    "checked_in": false
+  },
+  {
+    "isbn": "0000000000002",
+    "title": "Fundamentals of JavaScript",
+    "author": "Mr Simeon Osiemo"
+  },
+  {
+    "isbn": "0000000000003",
+    "title": "How to GraphQL",
+    "author": "Ronald Kemei",
+    "checked_out": true,
+    "checked_in": false
+  },
+  {
+    "isbn": "0000000000004",
+    "title": "48 Laws of Power",
+    "author": "Morris Green",
+    "checked_out": true,
+    "checked_in": false
+  }
+]
