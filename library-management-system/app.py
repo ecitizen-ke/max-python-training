@@ -73,6 +73,19 @@ class Library:
             if "checked_out" in books and books["checked_out"]:
                 print(books)
 
+    def return_book(self, title):
+        """This method adds the ability to return a borrowed book to the library"""
+        # Search for the book by its title
+        for book in self.books:
+            if (
+                book["title"].lower() == title.lower()
+                and book["checked_out"]
+                and not book["checked_in"]
+            ):
+                book.update({"checked_out": False, "checked_in": True})
+                commit(self.books, "w+")
+                print(f"Thank you for returning {title} to the library!")
+
 
 def commit(object, flag):
     """Persist the transaction in the file"""
@@ -85,10 +98,7 @@ def run():
     """This function runs the application"""
     # inititialize the Library object
     library = Library()
-    book = Book().save("0000000000005", "A Primer to Kubernetes", "Maxwel Barno")
-    library.add_book(book)
-    library.book_checkout("Morris Green")
-    library.display_checked_out_books()
+    library.return_book("48 Laws of Power")
 
 
 if __name__ == "__main__":
