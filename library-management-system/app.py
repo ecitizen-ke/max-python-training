@@ -98,7 +98,51 @@ def run():
     """This function runs the application"""
     # inititialize the Library object
     library = Library()
-    library.return_book("48 Laws of Power")
+    print("==========Welcome to Library Management System============")
+    print("With our system, by issuing a simple command, you can:")
+    print("1. Check the books available in our libray")
+    print("2. Add a book to the libray")
+    print("3. Borrow a book from the library")
+    print("4. Check all borrowed books in the library")
+    print("5. Adios!")
+
+    command = input("Enter Command:")
+    if command == "1":
+
+        print("An inventory of all the books in the library")
+        print("--------------------------------------------")
+        library.display_all_books()
+        print("Done! Exiting Command..")
+
+    elif command == "2":
+        print("Add Book")
+        print("--------")
+        isbn = input("Enter book ISBN(13 digits):")
+        title = input("Enter book title:")
+        author = input("Enter book author:")
+        bk = Book().save(isbn, title, author)
+        library.add_book(bk)
+        print("Transaction complete. Exiting..")
+
+    elif command == "3":
+        print("Find Book")
+        print("---------")
+        title = input("Enter the title of the book:")
+        library.book_checkout(title)
+        print("Done! Exiting..")
+
+    elif command == "4":
+        print("A list of All Borrowed Books")
+        print("---------------------------")
+        library.display_checked_out_books()
+        print("Done! Exiting..")
+
+    elif command == "5":
+        print("Thanks and Adios...")
+        exit()
+    else:
+        print("Thanks and Adios...")
+        exit()
 
 
 if __name__ == "__main__":
