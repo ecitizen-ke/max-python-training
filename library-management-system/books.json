@@ -29,5 +29,12 @@
     "isbn": "0000000000005",
     "title": "A Primer to Kubernetes",
     "author": "Maxwel Barno"
+  },
+  {
+    "isbn": "0000000000006",
+    "title": "The Davinci Code",
+    "author": "Robert Langdon",
+    "checked_out": true,
+    "checked_in": false
   }
 ]
