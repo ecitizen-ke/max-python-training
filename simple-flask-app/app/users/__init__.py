@@ -1,11 +1,12 @@
-from flask import jsonify
+from flask import jsonify, Blueprint
+
+users_bp = Blueprint("users_bp", __name__)
 
 
-def users_view(app):
-    @app.route("/users")
-    def get_users():
-        users = [
-            {"name": "Nigel", "role": "admin"},
-            {"name": "Naomi", "price": "customer"},
-        ]
-        return jsonify(users)
+@users_bp.route("/users")
+def get_users():
+    users = [
+        {"name": "Nigel", "role": "admin"},
+        {"name": "Naomi", "price": "customer"},
+    ]
+    return jsonify(users)

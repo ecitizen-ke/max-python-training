@@ -1,11 +1,10 @@
-from flask import Flask, jsonify
-from app.products import products_view
-from app.users import users_view
+from flask import Flask
+from app.products import products_bp
+from app.users import users_bp
 
 app = Flask(__name__)
-
-products_view(app)
-users_view(app)
+app.register_blueprint(products_bp)
+app.register_blueprint(users_bp)
 
 
 if __name__ == "__main__":
