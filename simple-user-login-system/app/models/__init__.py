@@ -5,29 +5,39 @@ class User:
     def __init__(self):
         self.db = Connection()
 
-    users = []
-
     def create(self, username, password):
 
         self.username = username
         self.password = password
 
-        # Insert user data into the database
-        user = [self.username, self.password]
-        self.db.cursor.execute(
-            "INSERT INTO users (username, password) VALUES(%s, %s)", user
-        )
+        # User data
+        user = (self.username, self.password)
 
-        # Commit
+        query = "INSERT INTO users (username, password) VALUES(%s, %s)"
+
+        # Execute query that inserts user data into the database
+        self.db.cursor.execute(query, user)
+
+        # Commit data to the database
         self.db.conn.commit()
+        # Close cursor
+        self.db.cursor.close()
+        # Close connection
+        self.db.conn.close()
 
     def user_login(self, username, password):
         """select a record from the database table based on its username"""
-        self.db.cursor.execute("SELECT * FROM users WHERE username=%s", [username])
-        # Get the record tuple
+        query = "SELECT * FROM users WHERE username=%s"
+        self.db.cursor.execute(query, [username])
+
+        # Retrieve the user record in the database: returns a tuple
         record = self.db.cursor.fetchone()
 
-        # Unpack the tuple
-        record_id, record_username, record_password = record
-        if record and record_password == password:
+        # Compare database password with given password
+        if record and record[2] == password:
             return True
+
+        # Close cursor
+        self.db.cursor.close()
+        # Close connection
+        self.db.conn.close()

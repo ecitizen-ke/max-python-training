@@ -12,7 +12,7 @@ class Connection:
 
         # Create a db connection
         self.conn = mysql.connector.connect(
-            host=self.host, db=self.db, user=self.user, password=self.password
+            host=self.host, database=self.db, user=self.user, password=self.password
         )
 
         # Create cursor
