@@ -18,8 +18,11 @@ class User:
         # Execute query that inserts user data into the database
         self.db.cursor.execute(query, user)
 
-        # Commit data to the database
-        self.db.conn.commit()
+        # If query execution is successful
+        if self.db.cursor.rowcount:
+            # Commit data to the database
+            self.db.conn.commit()
+
         # Close cursor
         self.db.cursor.close()
         # Close connection
