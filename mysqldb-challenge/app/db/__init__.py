@@ -1,5 +1,5 @@
 from flask import current_app
-import mysql.connector
+from mysql.connector import connect
 
 
 class Connection:
@@ -12,7 +12,7 @@ class Connection:
         self.password = current_app.config["MYSQL_PASSWORD"]
 
         # Create a db connection
-        self.conn = mysql.connector.connect(
+        self.conn = connect(
             host=self.host, database=self.db, user=self.user, password=self.password
         )
 

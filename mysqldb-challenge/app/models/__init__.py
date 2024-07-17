@@ -29,10 +29,7 @@ class State:
                 }
                 self.states.append(state)
             return self.states
-        # Close cursor
-        self.db.cursor.close()
-        # Close connection
-        self.db.conn.close()
+        self.close_connection()
 
     def filter(self):
         """Filter states by first letter"""
@@ -52,10 +49,7 @@ class State:
                 }
                 self.states.append(state)
             return self.states
-        # Close cursor
-        self.db.cursor.close()
-        # Close connection
-        self.db.conn.close()
+        self.close_connection()
 
     def create(self, name, abbreviation, population, year_admitted):
         """Create state method"""
@@ -75,16 +69,14 @@ class State:
         if self.db.cursor.rowcount:
             # Commit data to the database
             self.db.conn.commit()
+            self.close_connection()
+
             return {
                 "name": self.name,
                 "abbreviation": self.abbreviation,
                 "population": self.population,
                 "year_admitted": year_admitted,
             }
-        # Close cursor
-        self.db.cursor.close()
-        # Close connection
-        self.db.conn.close()
 
     def update(self, id, population):
         """Update state population method"""
@@ -105,10 +97,7 @@ class State:
                 "population": updated_state[3],
                 "year_admitted": updated_state[4],
             }
-        # Close cursor
-        self.db.cursor.close()
-        # Close connection
-        self.db.conn.close()
+        self.close_connection()
 
     def delete(self, id):
         """delete state method"""
@@ -119,11 +108,9 @@ class State:
         if self.db.cursor.rowcount:
             # Commit data to the database
             self.db.conn.commit()
-            return {"message": "State deleted successfully"}
-        # Close cursor
-        self.db.cursor.close()
-        # Close connection
-        self.db.conn.close()
+            return True
+
+        self.close_connection()
 
     def search(self, name):
         """delete state method"""
@@ -132,17 +119,15 @@ class State:
         self.db.cursor.execute(query, [self.name])
         # If query execution is successful
         state = self.db.cursor.fetchone()
-        # Close cursor
-        self.db.cursor.close()
-        # Close connection
-        self.db.conn.close()
-        return {
-            "id": state[0],
-            "name": state[1],
-            "abbreviation": state[2],
-            "population": state[3],
-            "year_admitted": state[4],
-        }
+        if state:
+            return {
+                "id": state[0],
+                "name": state[1],
+                "abbreviation": state[2],
+                "population": state[3],
+                "year_admitted": state[4],
+            }
+        self.close_connection()
 
     def get_capitals(self):
         """fetch state capitals method"""
@@ -154,27 +139,22 @@ class State:
                 capital = {"id": row[0], "state_id": row[1], "name": row[2]}
                 self.capitals.append(capital)
             return self.capitals
-        # Close cursor
-        self.db.cursor.close()
-        # Close connection
-        self.db.conn.close()
+        self.close_connection()
 
     def get__most_populous(self):
         """fetch the most populous state"""
-        query = "SELECT * FROM  states WHERE population = (SELECT MIN(population) FROM states)"
+        query = "SELECT * FROM  states WHERE population = (SELECT MAX(population) FROM states)"
         self.db.cursor.execute(query)
         state = self.db.cursor.fetchone()
-        # Close cursor
-        self.db.cursor.close()
-        # Close connection
-        self.db.conn.close()
-        return {
-            "id": state[0],
-            "state": state[1],
-            "abbreviation": state[2],
-            "population": state[3],
-            "year_admitted": state[4],
-        }
+        if state:
+            return {
+                "id": state[0],
+                "state": state[1],
+                "abbreviation": state[2],
+                "population": state[3],
+                "year_admitted": state[4],
+            }
+        self.close_connection()
 
     def get_states_capitals(self):
         """fetch states with their capitals"""
@@ -194,7 +174,9 @@ class State:
                 }
                 self.states_capitals.append(state)
             return self.states_capitals
-        # Close cursor
+        self.close_connection()
+
+    def close_connection(self):
         self.db.cursor.close()
         # Close connection
         self.db.conn.close()
